@@ -26,17 +26,9 @@ class GetMyVariableResult(object):
         :type response: dict
         """
         
-        self.__expire = int(response['expire']) if 'expire' in response.keys() and response['expire'] is not None else None
-        
         self.__value = unicode(response['value']) if 'value' in response.keys() and response['value'] is not None else None
-
-    def get_expire(self):
-        """
-        有効期限(エポック秒)を取得
-        :return: 有効期限(エポック秒)
-        :rtype: int
-        """
-        return self.__expire
+        
+        self.__expire = int(response['expire']) if 'expire' in response.keys() and response['expire'] is not None else None
 
     def get_value(self):
         """
@@ -46,6 +38,14 @@ class GetMyVariableResult(object):
         """
         return self.__value
 
+    def get_expire(self):
+        """
+        有効期限(エポック秒)を取得
+        :return: 有効期限(エポック秒)
+        :rtype: int
+        """
+        return self.__expire
+
     def to_dict(self):
         """
         辞書配列に変換
@@ -53,8 +53,8 @@ class GetMyVariableResult(object):
         :rtype: dict
         """
         return { 
-            'expire': self.__expire,
-        
             'value': self.__value,
+        
+            'expire': self.__expire,
         
         }
