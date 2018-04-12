@@ -32,9 +32,11 @@ class GetVariableRequest(Gs2BasicRequest):
         super(GetVariableRequest, self).__init__(params)
         if params is None:
             self.__user_id = None
-            self.__variable_name = None
         else:
             self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
+        if params is None:
+            self.__variable_name = None
+        else:
             self.set_variable_name(params['variableName'] if 'variableName' in params.keys() else None)
 
     def get_user_id(self):
@@ -51,6 +53,8 @@ class GetVariableRequest(Gs2BasicRequest):
         :param user_id: 変数のスコープとなるユーザID
         :type user_id: unicode
         """
+        if not isinstance(user_id, unicode):
+            raise TypeError(type(user_id))
         self.__user_id = user_id
 
     def with_user_id(self, user_id):
@@ -78,6 +82,8 @@ class GetVariableRequest(Gs2BasicRequest):
         :param variable_name: 変数名
         :type variable_name: unicode
         """
+        if not isinstance(variable_name, unicode):
+            raise TypeError(type(variable_name))
         self.__variable_name = variable_name
 
     def with_variable_name(self, variable_name):

@@ -25,9 +25,7 @@ class SetVariableResult(object):
         :type response: レスポンスボディ
         :type response: dict
         """
-        
         self.__value = unicode(response['value']) if 'value' in response.keys() and response['value'] is not None else None
-        
         self.__expire = int(response['expire']) if 'expire' in response.keys() and response['expire'] is not None else None
 
     def get_value(self):
@@ -52,9 +50,7 @@ class SetVariableResult(object):
         :return: 辞書配列
         :rtype: dict
         """
-        return { 
+        return {
             'value': self.__value,
-        
             'expire': self.__expire,
-        
         }

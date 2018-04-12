@@ -32,13 +32,19 @@ class SetVariableRequest(Gs2BasicRequest):
         super(SetVariableRequest, self).__init__(params)
         if params is None:
             self.__user_id = None
-            self.__variable_name = None
-            self.__value = None
-            self.__ttl = None
         else:
             self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
+        if params is None:
+            self.__variable_name = None
+        else:
             self.set_variable_name(params['variableName'] if 'variableName' in params.keys() else None)
+        if params is None:
+            self.__value = None
+        else:
             self.set_value(params['value'] if 'value' in params.keys() else None)
+        if params is None:
+            self.__ttl = None
+        else:
             self.set_ttl(params['ttl'] if 'ttl' in params.keys() else None)
 
     def get_user_id(self):
@@ -55,6 +61,8 @@ class SetVariableRequest(Gs2BasicRequest):
         :param user_id: 変数のスコープとなるユーザID
         :type user_id: unicode
         """
+        if not isinstance(user_id, unicode):
+            raise TypeError(type(user_id))
         self.__user_id = user_id
 
     def with_user_id(self, user_id):
@@ -82,6 +90,8 @@ class SetVariableRequest(Gs2BasicRequest):
         :param variable_name: 変数名
         :type variable_name: unicode
         """
+        if not isinstance(variable_name, unicode):
+            raise TypeError(type(variable_name))
         self.__variable_name = variable_name
 
     def with_variable_name(self, variable_name):
@@ -109,6 +119,8 @@ class SetVariableRequest(Gs2BasicRequest):
         :param value: 値
         :type value: unicode
         """
+        if not isinstance(value, unicode):
+            raise TypeError(type(value))
         self.__value = value
 
     def with_value(self, value):
@@ -136,6 +148,8 @@ class SetVariableRequest(Gs2BasicRequest):
         :param ttl: 変数の有効期間(秒)
         :type ttl: int
         """
+        if not isinstance(ttl, int):
+            raise TypeError(type(ttl))
         self.__ttl = ttl
 
     def with_ttl(self, ttl):
