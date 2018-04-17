@@ -53,7 +53,7 @@ class SetMyVariableRequest(Gs2UserRequest):
         :param variable_name: 変数名
         :type variable_name: unicode
         """
-        if variable_name and not isinstance(variable_name, unicode):
+        if _variable_name and not (isinstance(_variable_name, str) or isinstance(_variable_name, unicode)):
             raise TypeError(type(variable_name))
         self.__variable_name = variable_name
 
@@ -82,7 +82,7 @@ class SetMyVariableRequest(Gs2UserRequest):
         :param value: 値
         :type value: unicode
         """
-        if value and not isinstance(value, unicode):
+        if _value and not (isinstance(_value, str) or isinstance(_value, unicode)):
             raise TypeError(type(value))
         self.__value = value
 
@@ -111,7 +111,7 @@ class SetMyVariableRequest(Gs2UserRequest):
         :param ttl: 変数の有効期間(秒)
         :type ttl: int
         """
-        if ttl and not isinstance(ttl, int):
+        if _ttl and not isinstance(_ttl, int):
             raise TypeError(type(ttl))
         self.__ttl = ttl
 

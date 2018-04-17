@@ -61,7 +61,7 @@ class SetVariableRequest(Gs2BasicRequest):
         :param user_id: 変数のスコープとなるユーザID
         :type user_id: unicode
         """
-        if user_id and not isinstance(user_id, unicode):
+        if user_id and not (isinstance(user_id, str) or isinstance(user_id, unicode)):
             raise TypeError(type(user_id))
         self.__user_id = user_id
 
@@ -90,7 +90,7 @@ class SetVariableRequest(Gs2BasicRequest):
         :param variable_name: 変数名
         :type variable_name: unicode
         """
-        if variable_name and not isinstance(variable_name, unicode):
+        if variable_name and not (isinstance(variable_name, str) or isinstance(variable_name, unicode)):
             raise TypeError(type(variable_name))
         self.__variable_name = variable_name
 
@@ -119,7 +119,7 @@ class SetVariableRequest(Gs2BasicRequest):
         :param value: 値
         :type value: unicode
         """
-        if value and not isinstance(value, unicode):
+        if value and not (isinstance(value, str) or isinstance(value, unicode)):
             raise TypeError(type(value))
         self.__value = value
 

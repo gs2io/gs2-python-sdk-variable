@@ -49,7 +49,7 @@ class DeleteMyVariableRequest(Gs2UserRequest):
         :param variable_name: 変数名
         :type variable_name: unicode
         """
-        if variable_name and not isinstance(variable_name, unicode):
+        if _variable_name and not (isinstance(_variable_name, str) or isinstance(_variable_name, unicode)):
             raise TypeError(type(variable_name))
         self.__variable_name = variable_name
 
