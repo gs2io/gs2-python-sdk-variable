@@ -16,6 +16,7 @@
 
 from gs2_core_client.Gs2Constant import Gs2Constant
 from gs2_core_client.AbstractGs2Client import AbstractGs2Client
+from aws_sdk_for_serverless.common import url_encoder
 
 
 class Gs2VariableClient(AbstractGs2Client):
@@ -47,7 +48,7 @@ class Gs2VariableClient(AbstractGs2Client):
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_variable_client.control.DeleteMyVariableRequest import DeleteMyVariableRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else request.get_variable_name())) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else url_encoder.encode(request.get_variable_name()))) + "",
             service=self.ENDPOINT,
             component=DeleteMyVariableRequest.Constant.MODULE,
             target_function=DeleteMyVariableRequest.Constant.FUNCTION,
@@ -69,7 +70,7 @@ class Gs2VariableClient(AbstractGs2Client):
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_variable_client.control.DeleteVariableRequest import DeleteVariableRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else request.get_variable_name())) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else url_encoder.encode(request.get_variable_name()))) + "",
             service=self.ENDPOINT,
             component=DeleteVariableRequest.Constant.MODULE,
             target_function=DeleteVariableRequest.Constant.FUNCTION,
@@ -96,7 +97,7 @@ class Gs2VariableClient(AbstractGs2Client):
 
         from gs2_variable_client.control.GetMyVariableResult import GetMyVariableResult
         return GetMyVariableResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else request.get_variable_name())) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else url_encoder.encode(request.get_variable_name()))) + "",
             service=self.ENDPOINT,
             component=GetMyVariableRequest.Constant.MODULE,
             target_function=GetMyVariableRequest.Constant.FUNCTION,
@@ -122,7 +123,7 @@ class Gs2VariableClient(AbstractGs2Client):
 
         from gs2_variable_client.control.GetVariableResult import GetVariableResult
         return GetVariableResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else request.get_variable_name())) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else url_encoder.encode(request.get_variable_name()))) + "",
             service=self.ENDPOINT,
             component=GetVariableRequest.Constant.MODULE,
             target_function=GetVariableRequest.Constant.FUNCTION,
@@ -151,7 +152,7 @@ class Gs2VariableClient(AbstractGs2Client):
         from gs2_variable_client.control.SetMyVariableRequest import SetMyVariableRequest
         from gs2_variable_client.control.SetMyVariableResult import SetMyVariableResult
         return SetMyVariableResult(self._do_put_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else request.get_variable_name())) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else url_encoder.encode(request.get_variable_name()))) + "",
             service=self.ENDPOINT,
             component=SetMyVariableRequest.Constant.MODULE,
             target_function=SetMyVariableRequest.Constant.FUNCTION,
@@ -179,7 +180,7 @@ class Gs2VariableClient(AbstractGs2Client):
         from gs2_variable_client.control.SetVariableRequest import SetVariableRequest
         from gs2_variable_client.control.SetVariableResult import SetVariableResult
         return SetVariableResult(self._do_put_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else request.get_variable_name())) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else url_encoder.encode(request.get_variable_name()))) + "",
             service=self.ENDPOINT,
             component=SetVariableRequest.Constant.MODULE,
             target_function=SetVariableRequest.Constant.FUNCTION,
