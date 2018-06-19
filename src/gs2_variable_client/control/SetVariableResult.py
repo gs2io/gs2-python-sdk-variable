@@ -27,7 +27,6 @@ class SetVariableResult(object):
         """
         self.__value = unicode(response['value']) if 'value' in response.keys() and response['value'] is not None else None
         self.__expire = int(response['expire']) if 'expire' in response.keys() and response['expire'] is not None else None
-
     def get_value(self):
         """
         値を取得
@@ -35,7 +34,6 @@ class SetVariableResult(object):
         :rtype: unicode
         """
         return self.__value
-
     def get_expire(self):
         """
         有効期限(エポック秒)を取得
@@ -43,6 +41,12 @@ class SetVariableResult(object):
         :rtype: int
         """
         return self.__expire
+
+    def __getitem__(self, key):
+        items = self.to_dict()
+        if key in items.keys():
+            return items[key]
+        return super(SetVariableResult, self).__getitem__(key)
 
     def to_dict(self):
         """
