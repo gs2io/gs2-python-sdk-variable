@@ -49,7 +49,7 @@ class GetMyVariableRequest(Gs2UserRequest):
         :param variable_name: 変数名
         :type variable_name: unicode
         """
-        if variable_name and not (isinstance(variable_name, str) or isinstance(variable_name, unicode)):
+        if variable_name is not None and not (isinstance(variable_name, str) or isinstance(variable_name, unicode)):
             raise TypeError(type(variable_name))
         self.__variable_name = variable_name
 

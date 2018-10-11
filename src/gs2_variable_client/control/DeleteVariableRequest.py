@@ -53,7 +53,7 @@ class DeleteVariableRequest(Gs2BasicRequest):
         :param user_id: 変数のスコープとなるユーザID
         :type user_id: unicode
         """
-        if user_id and not (isinstance(user_id, str) or isinstance(user_id, unicode)):
+        if user_id is not None and not (isinstance(user_id, str) or isinstance(user_id, unicode)):
             raise TypeError(type(user_id))
         self.__user_id = user_id
 
@@ -82,7 +82,7 @@ class DeleteVariableRequest(Gs2BasicRequest):
         :param variable_name: 変数名
         :type variable_name: unicode
         """
-        if variable_name and not (isinstance(variable_name, str) or isinstance(variable_name, unicode)):
+        if variable_name is not None and not (isinstance(variable_name, str) or isinstance(variable_name, unicode)):
             raise TypeError(type(variable_name))
         self.__variable_name = variable_name
 

@@ -41,14 +41,14 @@ class Gs2VariableClient(AbstractGs2Client):
         :type request: gs2_variable_client.control.DeleteMyVariableRequest.DeleteMyVariableRequest
         """
         query_strings = {}
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_variable_client.control.DeleteMyVariableRequest import DeleteMyVariableRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else url_encoder.encode(request.get_variable_name()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else request.get_variable_name())) + "",
             service=self.ENDPOINT,
             component=DeleteMyVariableRequest.Constant.MODULE,
             target_function=DeleteMyVariableRequest.Constant.FUNCTION,
@@ -64,13 +64,12 @@ class Gs2VariableClient(AbstractGs2Client):
         :type request: gs2_variable_client.control.DeleteVariableRequest.DeleteVariableRequest
         """
         query_strings = {}
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_variable_client.control.DeleteVariableRequest import DeleteVariableRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else url_encoder.encode(request.get_variable_name()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else request.get_variable_name())) + "",
             service=self.ENDPOINT,
             component=DeleteVariableRequest.Constant.MODULE,
             target_function=DeleteVariableRequest.Constant.FUNCTION,
@@ -86,18 +85,17 @@ class Gs2VariableClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_variable_client.control.GetMyVariableResult.GetMyVariableResult
         """
-        query_strings = {
-        }
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        query_strings = {}
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_variable_client.control.GetMyVariableRequest import GetMyVariableRequest
 
         from gs2_variable_client.control.GetMyVariableResult import GetMyVariableResult
         return GetMyVariableResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else url_encoder.encode(request.get_variable_name()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else request.get_variable_name())) + "",
             service=self.ENDPOINT,
             component=GetMyVariableRequest.Constant.MODULE,
             target_function=GetMyVariableRequest.Constant.FUNCTION,
@@ -113,17 +111,15 @@ class Gs2VariableClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_variable_client.control.GetVariableResult.GetVariableResult
         """
-        query_strings = {
-        }
-        headers = { 
-        }
+        query_strings = {}
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_variable_client.control.GetVariableRequest import GetVariableRequest
 
         from gs2_variable_client.control.GetVariableResult import GetVariableResult
         return GetVariableResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else url_encoder.encode(request.get_variable_name()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else request.get_variable_name())) + "",
             service=self.ENDPOINT,
             component=GetVariableRequest.Constant.MODULE,
             target_function=GetVariableRequest.Constant.FUNCTION,
@@ -144,15 +140,15 @@ class Gs2VariableClient(AbstractGs2Client):
             "value": request.get_value(),
             "ttl": request.get_ttl(),
         }
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_variable_client.control.SetMyVariableRequest import SetMyVariableRequest
         from gs2_variable_client.control.SetMyVariableResult import SetMyVariableResult
         return SetMyVariableResult(self._do_put_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else url_encoder.encode(request.get_variable_name()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else request.get_variable_name())) + "",
             service=self.ENDPOINT,
             component=SetMyVariableRequest.Constant.MODULE,
             target_function=SetMyVariableRequest.Constant.FUNCTION,
@@ -173,14 +169,13 @@ class Gs2VariableClient(AbstractGs2Client):
             "value": request.get_value(),
             "ttl": request.get_ttl(),
         }
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_variable_client.control.SetVariableRequest import SetVariableRequest
         from gs2_variable_client.control.SetVariableResult import SetVariableResult
         return SetVariableResult(self._do_put_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else url_encoder.encode(request.get_variable_name()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "/variable/" + str(("null" if request.get_variable_name() is None or request.get_variable_name() == "" else request.get_variable_name())) + "",
             service=self.ENDPOINT,
             component=SetVariableRequest.Constant.MODULE,
             target_function=SetVariableRequest.Constant.FUNCTION,
